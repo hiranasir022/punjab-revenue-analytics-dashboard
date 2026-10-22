@@ -26,13 +26,13 @@ Two real datasets are used:
 ## Dashboard
 
 **Revenue dashboard (2015-16 to 2023-24)**
-![Revenue dashboard](images/dashboard_revenue.png)
+![Revenue dashboard](dashboard_revenue.png)
 
 **Vehicle registrations by district**
-![District dashboard](images/dashboard_district.png)
+![District dashboard](dashboard_district.png)
 
 **Forecast baseline (registrations per quarter)**
-![Forecast dashboard](images/dashboard_forecast.png)
+![Forecast dashboard](dashboard_forecast.png)
 
 ---
 
@@ -46,9 +46,29 @@ Two real datasets are used:
 
 ### Supporting charts
 
-![Trend](images/chart_trend.png)
-![Growth](images/chart_growth.png)
-![Share](images/chart_share.png)
+![Trend](chart_trend.png)
+![Growth](chart_growth.png)
+![Share](chart_share.png)
+
+---
+
+## Python analysis (notebook)
+
+The full analysis is in [`Tax_Revenue_Analysis.ipynb`](Tax_Revenue_Analysis.ipynb),
+written for clarity: every code cell is explained in plain English, with its
+Excel equivalent and a small worked example. It reproduces every figure and
+finding above. The notebook covers:
+
+1. A short pandas primer on a toy table (filtering, groupby, pivot, growth, share, MAPE).
+2. Loading and inspecting the revenue data.
+3. A pivot of achieved revenue by levy and fiscal year, cross-checked against Excel.
+4. The trend of the two largest levies.
+5. Revenue concentration (share of total by levy).
+6. Year-on-year growth per levy.
+7. Target accuracy: achievement against target and target uplift, with descriptive statistics.
+8. District-wise registration disparity.
+9. A forecasting baseline: a trend-plus-seasonal regression, a train/test backtest, and a comparison with two naive benchmarks (MAPE).
+10. A results table and an honest statement of the data limits.
 
 ---
 
@@ -67,16 +87,18 @@ Two real datasets are used:
 
 ```
 .
-├── data/
-│   ├── 01_Provincial_Revenue_2015-2024.csv
-│   ├── 02_District_Vehicle_Registration_long.csv
-│   └── 03_District_Vehicle_Registration_Pivot.csv
-├── notebook/
-│   └── Tax_Revenue_Analysis.ipynb
-├── powerbi/
-│   └── Tax_Dashboard_Data.xlsx          (Power BI data source)
-├── images/                              (dashboard and chart screenshots)
-└── README.md
+├── README.md
+├── Tax_Revenue_Analysis.ipynb                    (Python analysis notebook)
+├── 01_Provincial_Revenue_2015-2024.csv           (revenue data)
+├── 02_District_Vehicle_Registration_long.csv     (district registrations, long)
+├── 03_District_Vehicle_Registration_Pivot.csv    (district registrations, wide)
+├── Tax_Dashboard_Data.xlsx                        (Power BI data source)
+├── dashboard_revenue.png
+├── dashboard_district.png
+├── dashboard_forecast.png
+├── chart_trend.png
+├── chart_growth.png
+└── chart_share.png
 ```
 
 ---
@@ -84,8 +106,8 @@ Two real datasets are used:
 ## How to reproduce
 
 1. Install the libraries: `pip install pandas numpy matplotlib`
-2. Put the CSVs in `data/` and open `notebook/Tax_Revenue_Analysis.ipynb`.
-3. Run the cells top to bottom. Charts are saved to a `charts/` folder.
+2. Keep the CSVs in the same folder as the notebook.
+3. Open `Tax_Revenue_Analysis.ipynb` and run the cells top to bottom. Charts are saved to a `charts/` folder.
 
 ---
 
