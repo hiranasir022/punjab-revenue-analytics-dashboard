@@ -3,7 +3,8 @@
 
 A data analysis and forecasting project on provincial tax revenue and vehicle
 registrations, built from publicly disclosed government data. It combines a
-Python analysis notebook with a three-page interactive Power BI dashboard.
+Python analysis notebook, a matching set of SQL queries, and a three-page
+interactive Power BI dashboard.
 
 > Analysis of publicly disclosed data under the Right to Information Act, 2013.
 > Personal academic work; views are my own and do not represent the department.
@@ -72,9 +73,22 @@ finding above. The notebook covers:
 
 ---
 
+## SQL analysis
+
+The same analysis is also written in SQL, in [`tax_revenue_analysis.sql`](tax_revenue_analysis.sql)
+(written for PostgreSQL; it runs in most SQL engines with minor changes). It shows
+the same findings using core SQL skills: `CASE` pivots, `GROUP BY` aggregation,
+common table expressions (`WITH`), subqueries, and the `LAG()` window function
+for year-on-year growth. The queries cover total revenue per levy, revenue by
+levy and year, the two-largest-levy concentration, year-on-year growth, target
+accuracy, district disparity, the top-5 district share, and quarterly totals.
+
+---
+
 ## Tools and methods
 
 - **Python**: pandas, NumPy, matplotlib
+- **SQL**: CASE pivots, CTEs, subqueries and window functions (PostgreSQL)
 - **Power BI**: three-page interactive dashboard with slicers and KPI cards
 - **Methods**: pivot tables, year-on-year growth, share-of-total concentration,
   descriptive statistics for target reliability, and a linear regression
@@ -89,6 +103,7 @@ finding above. The notebook covers:
 .
 ├── README.md
 ├── Tax_Revenue_Analysis.ipynb                    (Python analysis notebook)
+├── tax_revenue_analysis.sql                      (SQL version of the analysis)
 ├── 01_Provincial_Revenue_2015-2024.csv           (revenue data)
 ├── 02_District_Vehicle_Registration_long.csv     (district registrations, long)
 ├── 03_District_Vehicle_Registration_Pivot.csv    (district registrations, wide)
